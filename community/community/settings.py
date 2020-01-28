@@ -78,7 +78,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # 指定连接mysql
         'NAME': 'community_db', # 刚刚创建的数据库
         'USER': 'root',  # 使用root账户
-        'PASSWORD': '',  # 因为mysql没有设置
+        'PASSWORD': 'guohaoyu110',  # 因为mysql没有设置
         'HOST': '127.0.0.1',
         'PORT': '3306' # MYSQL的固定端口号
     }
