@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+# -*- coding: utf-8 -*-
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'community.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql', # 指定连接mysql
+        'NAME': 'community_db', # 刚刚创建的数据库
+        'USER': 'root',  # 使用root账户
+        'PASSWORD': '',  # 因为mysql没有设置
+        'HOST': '127.0.0.1',
+        'PORT': '3306' # MYSQL的固定端口号
     }
 }
 

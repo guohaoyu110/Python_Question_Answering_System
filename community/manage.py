@@ -2,7 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-
+# This project is default to use MYSQL as database.
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'community.settings')
