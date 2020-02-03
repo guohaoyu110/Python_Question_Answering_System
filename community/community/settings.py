@@ -29,7 +29,8 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# Django已经将 staticfiles 注册，已存在
+'''
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,6 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+'''
+INSTALLED_APPS = [
+     ...
+    'django.contrib.staticfiles',
+]
+
+
+# 定义static URL
+STATIC_URL = '/static/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
