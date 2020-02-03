@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="{% get_current_language as LANGUAGE_CODE %}">
 <head>
@@ -54,12 +54,12 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="#">{% trans 'profile' %}</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="#">{% trans 'Log out' %}</a></li>
+                                    <li><a href="{% url 'authentication:logout' %}">{% trans 'Log out' %}</a></li>
                                 </ul>
                             </li>
                         {% else %}
-                            <li><a href="#">{% trans 'Sign up' %}</a></li>
-                            <li><a href="#">{% trans 'Log in' %}</a></li>
+                            <li><a href="{% url 'authentication:signup' %}">{% trans 'Sign up' %}</a></li>
+                            <li><a href="{% url 'authentication:login' %}">{% trans 'Log in' %}</a></li>
                         {% endif %}
                     </ul>
                 </div>

@@ -1,4 +1,3 @@
-# create a route.
 from django.urls import path
 
 from .views import home

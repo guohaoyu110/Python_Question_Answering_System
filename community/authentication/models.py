@@ -1,7 +1,4 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser, PermissionsMixin
 )
@@ -17,6 +14,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=100, unique=True)
 
     is_admin = models.BooleanField(default=False)       # 如果用户具有所有权限，值为True。
+    is_superuser = models.BooleanField(default=False)   # 如果用户具有所有权限，值为True。
     is_staff = models.BooleanField(default=False)       # 如果用户被允许访问管理界面，值为 True。
     is_active = models.BooleanField(default=True)       # 如果用户帐户当前处于活动状态，值为True。
 
@@ -33,4 +31,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_userid(self):
         return User.objects.get(username=self.username).user_id
+
+
+
+
+
+
 

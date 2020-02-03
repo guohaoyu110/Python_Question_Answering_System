@@ -3,10 +3,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
 from .models import User
-'''
-在编写注册表单之前，需要先编写注册表单字段的合法性验证器，这些验证器将在创建表单时生效，
-并判断填入数据是否合法。用法是将其加入__init__()方法中。
-'''
+
 
 def forbidden_username_validator(value):
     """
@@ -54,33 +51,29 @@ def unique_username_ignore_case_validator(value):
         msg = _('User with this Username already exists.')
         raise ValidationError(msg)
 
+
 class SignUpForm(forms.ModelForm):
     """
     A form for creating new users.
     """
     username = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
-        max_length=30,required=True,label=_('Username'),
-        help_text=_("Username may contain alphanumeric, '_' and '.' characters.")
-    )
+        max_length=30, required=True, label=_('Username'),
+        help_text=_("Username may contain alphanumeric, '_' and '.' characters."))
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-        label=_('Password'),required=True
-    )
+        label=_('Password'), required=True)
     confirm_password = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-        label=_('Confirm your password'),required=True,
-    )
+        label=_('Confirm your password'), required=True)
     email = forms.EmailField(
         widget=forms.EmailInput(attrs={'class': 'form-control'}),
-        required=True,max_length=75,label=_('Email')
-    )
+        required=True, max_length=75, label=_('Email'))
 
     class Meta:
         model = User
         exclude = ['last_login', 'date_joined']
-        fields = ['username', 'email','password', 'confirm_password',]
-
+        fields = ['username', 'email', 'password', 'confirm_password',]
 
     def __init__(self, *args, **kwargs):
         """
@@ -95,7 +88,6 @@ class SignUpForm(forms.ModelForm):
             unique_email_validator,
         ]
 
-
     def clean_password(self):
         '''
         验证两次输入密码是否一致
@@ -105,9 +97,9 @@ class SignUpForm(forms.ModelForm):
         if password and confirm_password and password != confirm_password:
             msg = _('Passwords don\'t match.')
             self.add_error('confirm_password', msg)
-
+            
         return password
-
+    
     def clean(self):
         self.clean_password()
         super(SignUpForm, self).clean()
@@ -117,6 +109,7 @@ class SignUpForm(forms.ModelForm):
         保存前的操作
         """
         user = super().save(commit=False)
+        self.clean()
         user.set_password(self.cleaned_data['password'])
         user.save()
         return user

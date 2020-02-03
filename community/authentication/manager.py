@@ -1,4 +1,3 @@
-# to create a normal user interface
 from django.contrib.auth.models import BaseUserManager
 
 class UserManager(BaseUserManager):
@@ -19,6 +18,7 @@ class UserManager(BaseUserManager):
             username = username,
             email = self.normalize_email(email),
         )
+
         user.set_password(password)
         user.save()
 
