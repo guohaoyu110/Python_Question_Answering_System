@@ -45,9 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-
+'''
 # 定义static URL
 STATIC_URL = '/static/'
+'''
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -131,4 +132,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+# 定义 STATIC_URL，已存在
 STATIC_URL = '/static/'
+
+# 此段代码需自己添加，需添加在文件末尾
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
