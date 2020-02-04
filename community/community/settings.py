@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'user_profile',
     'questions',
     'django.contrib.humanize',
+    'search',
 ]
 
 MIDDLEWARE = [
