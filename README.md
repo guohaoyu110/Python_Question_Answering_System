@@ -1,5 +1,7 @@
 # Python_Question\_Answering\_System
 
+Use Django to build a complete and mature community project, which realizes the main functions of user registration, discussion posting, discussion reply, site search, and so on.
+
 ## 1.1 Model requirements
 Basic attributes include common attributes such as mailbox, username, and password.
 
